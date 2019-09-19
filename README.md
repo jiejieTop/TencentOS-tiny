@@ -97,3 +97,67 @@ TencentOS tiny联合合作伙伴(南京厚德物联网)设计了定制开发板�
 扫码加群，请备注TencentOS tiny开发者，工作人员会根据备注进行审核：
 
 ![](./doc/picture/introduction/qq.png)
+
+
+# 九、同步TencentOS tiny源码
+由于`TencentOS tiny`会持续更新，很早就fork的仓库可能没能与源码同步，下面就介绍一下如何与`TencentOS tiny`源码进行同步处理（建议先同步再修改源码）。
+
+1. 查看远程状态
+```bash
+$ git remote -v
+origin  https://github.com/jiejieTop/TencentOS-tiny.git (fetch)
+origin  https://github.com/jiejieTop/TencentOS-tiny.git (push)
+```
+
+2. 确定一个将被同步给 fork 远程的上游仓库 
+```bash
+$ git remote add upstream https://github.com/Tencent/TencentOS-tiny
+```
+
+3. 再次查看状态确认是否配置成功。
+```bash
+$ git remote -v
+
+origin  https://github.com/jiejieTop/TencentOS-tiny.git (fetch)
+origin  https://github.com/jiejieTop/TencentOS-tiny.git (push)
+upstream        https://github.com/Tencent/TencentOS-tiny (fetch)
+upstream        https://github.com/Tencent/TencentOS-tiny (push)
+```
+4. 从上游仓库 `fetch` 分支和提交点，提交给本地 `master`，并会被存储在一个本地分支 `upstream/master` 
+```bash
+$ git fetch upstream
+```
+
+5. 此时可以查看分支
+```bash
+$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/upstream/master
+```
+6. 切换到本地主分支（如果不在的话）
+```bash
+git checkout master
+```
+
+7. 把 `upstream/master` 分支合并到本地 `master` 上，这样就完成了同步，并且不会丢掉本地修改的内容。 
+```bash
+$ git merge upstream/master
+Updating a1f370c..c448ac2
+Fast-forward
+ README.md                       |   7 +++----
+ doc/picture/introduction/qq.png | Bin 0 -> 2854 bytes
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+ create mode 100644 doc/picture/introduction/qq.png
+```
+
+8. 修改代码完成后更新到 `GitHub` 上
+```bash
+$ git push origin master
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/jiejieTop/TencentOS-tiny.git
+   a1f370c..c448ac2  master -> master
+```
+
+
