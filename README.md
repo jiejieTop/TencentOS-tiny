@@ -152,9 +152,15 @@ Fast-forward
  create mode 100644 doc/picture/introduction/qq.png
 ```
 
-8. 修改代码完成后更新到 `GitHub` 上
+8. 建议切换到其他分支上开发（非 `master` 分支）
 ```bash
-$ git push origin master
+$ git checkout dev
+Switched to branch 'dev'
+```
+
+9. 修改代码完成后更新到 `GitHub` 上
+```bash
+$ git push origin dev
 Total 0 (delta 0), reused 0 (delta 0)
 To https://github.com/jiejieTop/TencentOS-tiny.git
    a1f370c..c448ac2  master -> master
