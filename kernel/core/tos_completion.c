@@ -79,7 +79,7 @@ __API__ k_err_t tos_completion_pend_timed(k_completion_t *completion, k_tick_t t
         return K_ERR_PEND_NOWAIT;
     }
 
-    if (knl_is_inirq()) {
+    if (knl_is_inirq() || knl_context_is_inirq()) {
         TOS_CPU_INT_ENABLE();
         return K_ERR_PEND_IN_IRQ;
     }

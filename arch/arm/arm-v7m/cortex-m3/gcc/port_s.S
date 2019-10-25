@@ -1,6 +1,8 @@
     .global  port_int_disable
     .global  port_int_enable
 
+    .global  port_context_is_inirq
+
     .global  port_cpsr_save
     .global  port_cpsr_restore
 
@@ -38,6 +40,10 @@ port_int_enable:
     CPSIE   I
     BX      LR
 
+.type port_context_is_inirq, %function
+port_context_is_inirq
+    MRS     R0, IPSR
+    BX      LR
 
 .type port_cpsr_save, %function
 port_cpsr_save:

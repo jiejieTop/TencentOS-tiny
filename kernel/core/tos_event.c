@@ -107,7 +107,7 @@ __API__ k_err_t tos_event_pend(k_event_t *event, k_event_flag_t flag_expect, k_e
         return K_ERR_PEND_NOWAIT;
     }
 
-    if (knl_is_inirq()) {
+    if (knl_is_inirq() || knl_context_is_inirq()) {
         TOS_CPU_INT_ENABLE();
         return K_ERR_PEND_IN_IRQ;
     }

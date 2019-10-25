@@ -253,6 +253,11 @@ __KERNEL__ int knl_is_inirq(void)
     return k_irq_nest_cnt > 0u;
 }
 
+__KERNEL__ int knl_context_is_inirq(void)
+{
+    return cpu_context_is_inirq();
+}
+
 __KERNEL__ int knl_is_idle(k_task_t *task)
 {
     return task == &k_idle_task;

@@ -106,6 +106,11 @@ __KERNEL__ void cpu_irq_context_switch(void)
     port_irq_context_switch();
 }
 
+__KERNEL__ int cpu_context_is_inirq(void)
+{
+    return (port_context_is_inirq() != 0);
+}
+
 __KERNEL__ void cpu_systick_init(k_cycle_t cycle_per_tick)
 {
     port_systick_priority_set(TOS_CFG_CPU_SYSTICK_PRIO);

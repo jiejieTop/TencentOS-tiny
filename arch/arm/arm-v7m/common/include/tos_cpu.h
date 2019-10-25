@@ -70,6 +70,8 @@ __KERNEL__ void         cpu_context_switch(void);
 
 __KERNEL__ void         cpu_irq_context_switch(void);
 
+__KERNEL__ int          cpu_context_is_inirq(void);
+
 #if TOS_CFG_TASK_STACK_DRAUGHT_DEPTH_DETACT_EN > 0u
 
 __KERNEL__ k_err_t cpu_task_stack_draught_depth(k_stack_t *stk_base, size_t stk_size, int *depth);

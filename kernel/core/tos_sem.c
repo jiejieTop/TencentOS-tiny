@@ -129,7 +129,7 @@ __API__ k_err_t tos_sem_pend(k_sem_t *sem, k_tick_t timeout)
         return K_ERR_PEND_NOWAIT;
     }
 
-    if (knl_is_inirq()) {
+    if (knl_is_inirq() || knl_context_is_inirq()) {
         TOS_CPU_INT_ENABLE();
         return K_ERR_PEND_IN_IRQ;
     }

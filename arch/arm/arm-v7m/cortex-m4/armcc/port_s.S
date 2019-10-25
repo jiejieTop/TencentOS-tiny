@@ -1,6 +1,8 @@
 	EXPORT  port_int_disable
     EXPORT  port_int_enable
 
+    EXPORT  port_context_is_inirq
+
     EXPORT  port_cpsr_save
     EXPORT  port_cpsr_restore
 
@@ -39,6 +41,10 @@ port_int_enable
     CPSIE   I
     BX      LR
 
+    GLOBAL port_context_is_inirq
+port_context_is_inirq
+    MRS     R0, IPSR
+    BX      LR
 
     GLOBAL port_cpsr_save
 port_cpsr_save

@@ -267,6 +267,8 @@ __PORT__ void       port_int_disable(void);
 
 __PORT__ void       port_int_enable(void);
 
+__PORT__ int        port_context_is_inirq(void);
+
 __PORT__ cpu_cpsr_t port_cpsr_save(void);
 
 __PORT__ void       port_cpsr_restore(cpu_cpsr_t cpsr);

@@ -39,7 +39,7 @@
 
 #define TOS_IN_IRQ_CHECK()    \
     do {    \
-        if (unlikely(knl_is_inirq())) {   \
+        if (unlikely(knl_is_inirq()) || unlikely(knl_context_is_inirq())) {   \
             return K_ERR_IN_IRQ; \
         }   \
     } while(0)

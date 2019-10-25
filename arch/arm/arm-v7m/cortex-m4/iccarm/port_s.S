@@ -1,6 +1,8 @@
     PUBLIC  port_int_disable
     PUBLIC  port_int_enable
 
+    PUBLIC  port_context_is_inirq
+
     PUBLIC  port_cpsr_save
     PUBLIC  port_cpsr_restore
 
@@ -35,6 +37,9 @@ port_int_enable
     CPSIE   I
     BX      LR
 
+port_context_is_inirq
+    MRS     R0, IPSR
+    BX      LR
 
 port_cpsr_save
     MRS     R0, PRIMASK

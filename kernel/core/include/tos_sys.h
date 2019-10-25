@@ -153,6 +153,7 @@ __KERNEL__ int      knl_object_deinit(knl_obj_t *object);
 
 __KERNEL__ int      knl_is_sched_locked(void);
 __KERNEL__ int      knl_is_inirq(void);
+__KERNEL__ int      knl_context_is_inirq(void);
 __KERNEL__ int      knl_is_idle(k_task_t *task);
 __KERNEL__ int      knl_is_self(k_task_t *task);
 __KERNEL__ k_err_t  knl_idle_init(void);
